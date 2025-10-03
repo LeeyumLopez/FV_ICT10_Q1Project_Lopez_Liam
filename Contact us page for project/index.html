@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css" />
+  <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+  <!-- Pico CSS + small custom tweaks (matching PROJECT) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1.5.*/css/pico.min.css">
+  <style>
+    body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; font-family: Arial, sans-serif; }
+    .card { background: var(--surface-2, #f6f6f6); padding: 1rem; border-radius: 8px; margin-top: 1rem; }
+    pre { white-space: pre-wrap; font-family: inherit; background:transparent; margin:0; }
+    .menu, .customer, .summary { background:transparent; padding:0; border-radius:0; margin-top:12px; }
+    label{display:block;margin-top:8px}
+    input[type="text"], input[type="email"], textarea { width:100%; padding:8px; box-sizing:border-box; }
+    button { margin-top:10px; padding:10px 14px; background:#2d89ef; color:#fff; border:none; border-radius:6px; cursor:pointer; }
+    #contact-response { white-space: pre-wrap; font-family:inherit; margin-top:8px; }
+    @media (prefers-color-scheme: dark) { .card { background: #1f2933; color: #e6eef6; } }
+    /* simple navbar styles */
+    nav.site-nav{margin-bottom:12px}
+    nav.site-nav a{margin-right:14px;color:inherit;text-decoration:none;font-weight:600}
+  </style>
+  <title>Contact Us — Project</title>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="..\Contact us page for project\index.html">Contact Us!</a>
+    <a href="..\SW2\index.html">Home Page</a>
+    <a href="..\PROJECT\index.html">Ordering Form Page</a>
+  </nav>
+
+  <main class="card">
+    <h1>Contact Us</h1>
+    <p>Have a question or feedback? Send us a message and we'll get back to you.</p>
+
+    <label for="name">Name</label>
+    <input id="name" type="text" placeholder="Your full name">
+
+    <label for="email">Email</label>
+    <input id="email" type="email" placeholder="you@example.com">
+
+    <label for="message">Message</label>
+    <textarea id="message" rows="6" placeholder="Write your message here..."></textarea>
+
+    <button py-click="submit_contact">Send</button>
+
+  <br>
+  <p>If you want to call, contact: <strong>0867-986-2356</strong></p>
+
+    <div id="contact-response" class="card" style="min-height:48px;margin-top:12px"></div>
+  </main>
+
+  <py-script src="main.py"></py-script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css" />
+  <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+  <!-- Pico CSS + small custom tweaks (to match Drill #2) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1.5.*/css/pico.min.css">
+  <style>
+    body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; font-family: Arial, sans-serif; }
+    .card { background: var(--surface-2, #f6f6f6); padding: 1rem; border-radius: 8px; margin-top: 1rem; }
+    pre { white-space: pre-wrap; font-family: inherit; background:transparent; margin:0; }
+    .menu, .customer, .summary { background:transparent; padding:0; border-radius:0; margin-top:12px; }
+    .items label { display:block; margin:6px 0; }
+    input[type="text"], input[type="tel"], input[type="number"] { width:100%; padding:8px; box-sizing:border-box; }
+    button { margin-top:10px; padding:10px 14px; background:#2d89ef; color:#fff; border:none; border-radius:6px; cursor:pointer; }
+    #order-summary { white-space: pre-wrap; font-family:inherit; margin-top:8px; }
+    @media (prefers-color-scheme: dark) { .card { background: #1f2933; color: #e6eef6; } }
+    /* simple navbar styles */
+    nav.site-nav{margin-bottom:12px}
+    nav.site-nav a{margin-right:14px;color:inherit;text-decoration:none;font-weight:600}
+  </style>
+  <title>Food Ordering System</title>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="..\Contact us page for project\index.html">Contact Us!</a>
+    <a href="..\SW2\index.html">Home Page</a>
+    <a href="index.html">Ordering Form Page</a>
+  </nav>
+  <main class="card">
+    <h1>🍽️ Food Ordering System</h1>
+
+    <section class="menu">
+    <h3>📋 Menu</h3>
+    <div class="items">
+      <label><input id="goo_spaghetti" type="checkbox"> Goo Spaghetti — ₱150</label>
+      <label><input id="live_chicken" type="checkbox"> Live Chicken Burger — ₱250</label>
+      <label><input id="chocolate_milkshake" type="checkbox"> Chocolate Milkshake — ₱120</label>
+      <label><input id="human_salad" type="checkbox"> Human Salad — ₱130</label>
+      <label><input id="toe_fries" type="checkbox"> Toe Fries — ₱75</label>
+    </div>
+  </section>
+
+  <section class="customer">
+    <h3>👤 Customer Details</h3>
+    <label>Name: <input id="cust_name" type="text" placeholder="Full name"></label>
+    <label>Address: <input id="cust_address" type="text" placeholder="Address"></label>
+    <label>Contact number: <input id="cust_contact" type="tel" placeholder="0912-345-678"></label>
+    <!-- pys-onClick calls create_order placed into page namespace below -->
+    <button id="order-btn" py-click="create_order">Create Order</button>
+    </section>
+
+    <section class="summary">
+    <h3>📝 Order Summary</h3>
+    <div id="order-summary"><em>No order yet.</em></div>
+    </section>
+
+  </main>
+
+  <py-config>
+    [[fetch]]
+    files = ["main.py"]
+  </py-config>
+
+  <!-- load main.py (defines create_order) -->
+  <py-script src="main.py"></py-script>
+
+  <!-- import the function into the page-level PyScript namespace so pys-onClick finds it -->
+  <py-script>
+from main import create_order
+  </py-script>
+</body>
+</html>
